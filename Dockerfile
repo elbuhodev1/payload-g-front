@@ -29,8 +29,8 @@ RUN git clone https://github.com/ambrop72/badvpn.git && \
 WORKDIR /
 RUN useradd -m -s /bin/bash buhonero && \
     echo 'buhonero:gpc-test' | chpasswd && \
-    useradd -m -s /bin/bash gfrontelbuhonero && \
-    echo 'gfrontelbuhonero:tg-el-ibuhonero' | chpasswd
+    useradd -m -s /bin/bash gfrontbuho && \
+    echo 'gfrontbuho:3dias-gratis' | chpasswd
 RUN mkdir -p /etc/dropbear
 COPY --from=builder /app/app /usr/local/bin/proxy
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
