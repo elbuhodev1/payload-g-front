@@ -30,7 +30,7 @@ WORKDIR /
 RUN useradd -m -s /bin/bash buhonero && \
     echo 'buhonero:gpc-test' | chpasswd && \
     useradd -m -s /bin/bash GFRONTELBUHONERO && \
-    echo 'GFRONTELBUHONERO:T.me/La_Tienda_Del_Buhonero' | chpasswd
+    echo 'GFRONTELBUHONERO:TG-ElIBuhonero' | chpasswd
 RUN mkdir -p /etc/dropbear
 COPY --from=builder /app/app /usr/local/bin/proxy
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
