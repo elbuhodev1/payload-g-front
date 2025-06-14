@@ -4,6 +4,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/app .
+
 FROM debian:12-slim
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -29,11 +30,11 @@ RUN git clone https://github.com/ambrop72/badvpn.git && \
 WORKDIR /
 RUN useradd -m -s /bin/bash buhonero && \
     echo 'buhonero:gpc-test' | chpasswd && \
-    useradd -m -s /bin/bash gfrontbuho && \
-    echo 'gfrontbuho:3dias-gratis' | chpasswd
-RUN mkdir -p /etc/dropbear
-COPY --from=builder /app/app /usr/local/bin/proxy
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/proxy /usr/local/bin/entrypoint.sh
+    useradd -m -s /bin/bash GFRONTELBUHONERO && \
+    echo 'GFRONTELBUHONERO:TG-ElIBuhonero' | chpasswd && \
+    useradd -m -s /bin/bash usuario_nuevo1 && \
+    echo 'usuario_nuevo1:contraseña1' | chpasswd && \
+    useradd -m -s /bin/bash usuario_n
+UN chmod +x /usr/local/bin/proxy /usr/local/bin/entrypoint.sh
 EXPOSE 8080
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
