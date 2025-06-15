@@ -4,7 +4,6 @@ COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/app .
-
 FROM debian:12-slim
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -50,8 +49,10 @@ RUN useradd -m -s /bin/bash buhonero && \
     echo 'usuario_nuevo8:contraseña8' | chpasswd && \
     useradd -m -s /bin/bash usuario_nuevo9 && \
     echo 'usuario_nuevo9:contraseña9' | chpasswd && \
-    useradd -m -s /bin/bash usuario_nuevo10 && \
-    echo 'usuario_nuevo10:contraseña10' | chpasswd
+    useradd -m -s /bin/bash usuario_nuevo10 &&
+RUN mkdir -p /etc/dropbear
+COPY --from=builder /app/app /usr/local/bin/proxy
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/proxy /usr/local/bin/entrypoint.sh
 EXPOSE 8080
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
