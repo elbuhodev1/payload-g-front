@@ -52,17 +52,15 @@ echo "========================================="
 echo "VERIFICANDO USUARIOS CREADOS AL INICIAR..."
 echo ""
 echo "--- Buscando en /etc/passwd ---"
-grep -E 'buhonero|GFRONTELBUHONERO|usuario_nuevo1|usuario_nuevo2|usuario_nuevo3|usuario_nuevo4|usuario_nuevo5' /etc/passwd || echo "No se encontraron usuarios."
+grep -E 'buhonero|GFRONTELBUHONERO|usuario_nuevo1|usuario_nuevo2|usuario_nuevo3|usuario_nuevo4|usuario_nuevo5|usuario_nuevo6|usuario_nuevo7|usuario_nuevo8|usuario_nuevo9|usuario_nuevo10' /etc/passwd || echo "No se encontraron usuarios."
 echo ""
 echo "--- Directorios en /home ---"
 ls -l /home
 echo "========================================="
 
 echo "[INFO] Iniciando proxy en primer plano..."
-exec /usr/local/bin/proxy
-cho "  - SSH puerto: $DPORT"
-echo "  - UDPgw puerto: $UDPGW_PORT" # <- Línea de log añadida
+echo "  - SSH puerto: $DPORT"
+echo "  - UDPgw puerto: $UDPGW_PORT"
 echo "  - Host destino: $DHOST"
 echo "  - Paquetes a saltar: $PACKSKIP"
-echo "[INFO] Iniciando proxy en primer plano..."
 exec /usr/local/bin/proxy
